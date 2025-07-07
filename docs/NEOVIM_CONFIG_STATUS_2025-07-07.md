@@ -4,9 +4,34 @@
 
 This document provides a status report of the current Neovim configuration, focusing on recent issues and their resolutions.
 
-## Recent Issues and Resolutions
+## Current Issues and Status
 
-### 1. Which-key Registration (✓ RESOLVED)
+### 1. Neo-tree Module Error (⚠️ NEW)
+- **Issue**: Module 'nui.line' not found
+- **Error Message**:
+  ```
+  Error executing lua: ...are/nvim/lazy/neo-tree.nvim/lua/neo-tree/ui/renderer.lua:1: module 'nui.line' not found:
+  no field package.preload['nui.line']
+  cache_loader: module 'nui.line' not found
+  cache_loader_lib: module 'nui.line' not found
+  no file './nui/line.lua'
+  no file '/usr/local/share/luajit-2.1/nui/line.lua'
+  ...
+  ```
+- **Status**: Needs Resolution
+- **Impact**: Neo-tree file explorer not functioning
+
+### 2. Substrata Theme Error (⚠️ NEW)
+- **Issue**: Failed to run config for substrata
+- **Error Message**:
+  ```
+  Failed to run config for substrata
+  /Users/lukeannison/.config/nvim/lua/plugins/substrata.lua:9: attempt to call field 'setup' (a nil value)
+  ```
+- **Status**: Needs Resolution
+- **Impact**: Theme not loading properly
+
+### 3. Which-key Registration (✓ RESOLVED)
 - **Issue**: `attempt to call field 'add' (a nil value)` in astrocore
 - **Resolution**: 
   - Added which-key as a dependency in astrocore
@@ -49,11 +74,44 @@ This document provides a status report of the current Neovim configuration, focu
 │   └── treesitter.lua     # Syntax highlighting
 ```
 
+## Required Fixes
+
+### 1. Neo-tree Dependencies
+```lua
+return {
+  "nvim-neo-tree/neo-tree.nvim",
+  dependencies = {
+    "MunifTanjim/nui.nvim",  -- Add this explicitly
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+  },
+  config = function()
+    require("neo-tree").setup({
+      -- your config here
+    })
+  end,
+}
+```
+
+### 2. Substrata Theme Setup
+```lua
+return {
+  "lunarvim/substrata.nvim",
+  lazy = false,  -- Load immediately
+  priority = 1000,  -- Load before other plugins
+  config = function()
+    vim.cmd([[colorscheme substrata]])
+  end,
+}
+```
+
 ## Verification Steps
 
-The following checks have been performed:
+The following checks need to be performed:
 
-1. ✓ Clean startup with no errors
+1. ⚠️ Clean startup (Currently failing)
+   - Neo-tree module error
+   - Substrata theme error
 2. ✓ Which-key registration working
 3. ✓ LSP completion symbols displaying correctly
 4. ✓ All dependencies loading in correct order
