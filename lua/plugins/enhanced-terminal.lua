@@ -42,6 +42,16 @@ return {
         enabled = false,
       },
     },
+    config = function(_, opts)
+      require('toggleterm').setup(opts)
+      local Terminal = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new({ cmd = 'lazygit', hidden = true })
+      local python = Terminal:new({ cmd = 'python', hidden = true })
+      local node = Terminal:new({ cmd = 'node', hidden = true })
+      vim.keymap.set('n', '<leader>gg', function() lazygit:toggle() end, { desc = 'Toggle LazyGit' })
+      vim.keymap.set('n', '<leader>py', function() python:toggle() end, { desc = 'Toggle Python REPL' })
+      vim.keymap.set('n', '<leader>js', function() node:toggle() end, { desc = 'Toggle Node REPL' })
+    end,
   },
 }
 
