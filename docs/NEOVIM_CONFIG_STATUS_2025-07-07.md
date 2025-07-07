@@ -21,14 +21,15 @@ This document provides a status report of the current Neovim configuration, focu
 - **Status**: Needs Resolution
 - **Impact**: Neo-tree file explorer not functioning
 
-### 2. Substrata Theme Error (⚠️ NEW)
+### 2. Substrata Theme Error (✓ RESOLVED)
 - **Issue**: Failed to run config for substrata
 - **Error Message**:
   ```
   Failed to run config for substrata
   /Users/lukeannison/.config/nvim/lua/plugins/substrata.lua:9: attempt to call field 'setup' (a nil value)
   ```
-- **Status**: Needs Resolution
+- **Status**: Fixed
+- **Resolution**: Created proper theme configuration with correct repository
 - **Impact**: Theme not loading properly
 
 ### 3. Which-key Registration (✓ RESOLVED)
