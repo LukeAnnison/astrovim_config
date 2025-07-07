@@ -6,7 +6,18 @@ This document provides a status report of the current Neovim configuration, focu
 
 ## Current Issues and Status
 
-### 1. Neo-tree Module Error (⚠️ NEW)
+### 1. Alpha-nvim Configuration Error (⚠️ NEW)
+- **Issue**: Failed to run config for alpha-nvim
+- **Error Message**:
+  ```
+  Failed to run config for alpha-nvim
+  /Users/lukeannison/.config/nvim/lua/plugins/user.lua:24: attempt to index
+  ```
+- **Status**: Needs Resolution
+- **Impact**: Dashboard not functioning properly
+- **Root Cause**: AstroNvim v5 replaced alpha-nvim with snacks.dashboard
+
+### 2. Neo-tree Module Error
 - **Issue**: Module 'nui.line' not found
 - **Error Message**:
   ```

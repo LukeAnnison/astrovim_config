@@ -16,36 +16,43 @@ return {
     config = function() require("lsp_signature").setup() end,
   },
 
-  -- customize alpha options
+  -- Configure dashboard
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████ ",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████ ",
-        "",
-        "███    ██ ██    ██ ██ ███    ███",
-        "████   ██ ██    ██ ██ ████  ████",
-        "██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "██   ████   ████   ██ ██      ██",
-      }
-      local quotes = {
-        "Do. Or do not. There is no try.",
-        "The Force will be with you. Always.",
-        "Now, witness the power of this fully armed and operational editor!",
-        "Stay on target!",
-        "May the source be with you.",
-        "Fear is the path to the dark side. Code bravely.",
-      }
-      math.randomseed(os.time())
-      opts.section.footer.val = quotes[math.random(#quotes)]
-      return opts
-    end,
+    "AstroNvim/astrocore",
+    opts = {
+      features = {
+        snacks = true,
+      },
+      snacks = {
+        dashboard = {
+          header = {
+            " █████  ███████ ████████ ██████   ██████ ",
+            "██   ██ ██         ██    ██   ██ ██    ██",
+            "███████ ███████    ██    ██████  ██    ██",
+            "██   ██      ██    ██    ██   ██ ██    ██",
+            "██   ██ ███████    ██    ██   ██  ██████ ",
+            "",
+            "███    ██ ██    ██ ██ ███    ███",
+            "████   ██ ██    ██ ██ ████  ████",
+            "██ ██  ██ ██    ██ ██ ██ ████ ██",
+            "██  ██ ██  ██  ██  ██ ██  ██  ██",
+            "██   ████   ████   ██ ██      ██",
+          },
+          footer = function()
+            local quotes = {
+              "Do. Or do not. There is no try.",
+              "The Force will be with you. Always.",
+              "Now, witness the power of this fully armed and operational editor!",
+              "Stay on target!",
+              "May the source be with you.",
+              "Fear is the path to the dark side. Code bravely.",
+            }
+            math.randomseed(os.time())
+            return quotes[math.random(#quotes)]
+          end,
+        },
+      },
+    },
   },
 
   -- You can disable default plugins as follows:
