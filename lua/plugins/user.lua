@@ -34,6 +34,13 @@ return {
         "██  ██ ██  ██  ██  ██ ██  ██  ██",
         "██   ████   ████   ██ ██      ██",
       }
+      local quotes = {
+        "Do. Or do not. There is no try.",
+        "The Force will be with you. Always.",
+        "Now, witness the power of this fully armed and operational editor!",
+      }
+      math.randomseed(os.time())
+      opts.section.footer.val = quotes[math.random(#quotes)]
       return opts
     end,
   },
