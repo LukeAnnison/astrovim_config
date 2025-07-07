@@ -38,6 +38,9 @@ return {
         "Do. Or do not. There is no try.",
         "The Force will be with you. Always.",
         "Now, witness the power of this fully armed and operational editor!",
+        "Stay on target!",
+        "May the source be with you.",
+        "Fear is the path to the dark side. Code bravely.",
       }
       math.randomseed(os.time())
       opts.section.footer.val = quotes[math.random(#quotes)]

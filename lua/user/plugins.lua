@@ -20,4 +20,19 @@ return {
   { 'LinArcX/telescope-command-palette.nvim', lazy = true, dependencies = { 'nvim-telescope/telescope.nvim' }, config = function()
       require('telescope').load_extension('command_palette')
     end },
+  -- AI-assisted features
+  {
+    'jackMort/ChatGPT.nvim',
+    cmd = { 'ChatGPT', 'ChatGPTEditWithInstructions' },
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    opts = {
+      api_key_cmd = 'echo $OPENAI_API_KEY',
+    },
+  },
+  -- Zen and Twilight for focused coding
+  { 'folke/zen-mode.nvim', cmd = 'ZenMode' },
+  { 'folke/twilight.nvim', cmd = 'Twilight' },
+  -- Enhanced project navigation
+  { 'nvim-telescope/telescope-frecency.nvim', lazy = true, dependencies = { 'tami5/sqlite.lua' } },
+  { 'nvim-telescope/telescope-project.nvim', lazy = true },
 }
