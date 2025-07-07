@@ -1,4 +1,4 @@
--- AstroCore configuration enabled with custom keybindings
+-- AstroCore configuration with custom keybindings and which-key integration
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -8,6 +8,9 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
+  dependencies = {
+    "folke/which-key.nvim",
+  },
   ---@type AstroCoreOpts
   opts = {
     -- Configure core features of AstroNvim
